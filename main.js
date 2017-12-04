@@ -1,0 +1,2 @@
+generatePuzzlePieces();
+generatePuzzlePiecesStyle();
