@@ -80,25 +80,30 @@ function puzzleClick(index){
 
 	//check for empty neighbours, maybe do a for?
 	//just handle all the cases by hand because it's more readable
-	if( x+1 < sizeX && !cellOccupied(x+1,z+0) ){
+	var moved = false;
+
+	if( !moved && x+1 < sizeX && !cellOccupied(x+1,z+0) ){
 		setPuzzlePosition(index, (x+1) * sizeX + z+0);
-		return;
+		moved = true;
 	}
 
-	if( z+1 < sizeZ && !cellOccupied(x+0,z+1) ){
+	if( !moved && z+1 < sizeZ && !cellOccupied(x+0,z+1) ){
 		setPuzzlePosition(index, (x+0) * sizeX + z+1);
-		return;
+		moved = true;
 	}
 
-	if( x-1 > -1 && !cellOccupied(x-1,z+0) ){
+	if( !moved && x-1 > -1 && !cellOccupied(x-1,z+0) ){
 		setPuzzlePosition(index, (x-1) * sizeX + z+0);
-		return;
+		moved = true;
 	}
 
-	if( z-1 > -1 && !cellOccupied(x+0,z-1) ){
+	if( !moved && z-1 > -1 && !cellOccupied(x+0,z-1) ){
 		setPuzzlePosition(index, (x+0) * sizeX + z-1);
-		return;
+		moved = true;
 	}
+
+	if(moved && isCompleted())
+		triggerWin();
 }
 
 function isCompleted(){
@@ -108,6 +113,36 @@ function isCompleted(){
 		}
 	}
 	return true;
+}
+
+function triggerWin(){
+	for(i = 0; i < puzzleSize; i++){
+		$("#piece-"+i).animate({opacity: 0 });
+		$("#piece-text-"+i).animate({opacity: 0 });
+	}
+	
+	$("#background").animate({opacity: 1 });
+	$("#win-text").css('opacity', 1);
+}
+
+function complete(){
+	for(i = 0; i < puzzleSize; i++)
+		setPuzzlePosition(i,i);
+
+	triggerWin();
+}
+
+function restart(){
+	for(i = 0; i < puzzleSize; i++){
+		$("#piece-"+i).animate({opacity: 1 });
+		$("#piece-text-"+i).animate({opacity: 1 });
+	}
+	
+	$("#background").animate({opacity: .6 });
+
+	$("#win-text").css('opacity', 0);
+
+	shuffle();
 }
 
 function getRandomInt(min, max) {
