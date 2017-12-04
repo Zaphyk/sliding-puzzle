@@ -42,9 +42,12 @@ function shuffle(){
 
 function setPuzzlePosition(cellIndex, indexPosition){
 
-	$("#piece-"+cellIndex).css("top",  Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ) );
-	$("#piece-"+cellIndex).css("left", (indexPosition % sizeZ) * (imageSizeX / sizeX) );
+	$("#piece-"+cellIndex).animate({top: Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ),
+									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) });
+
 	$("#piece-"+cellIndex).attr("cell", indexPosition);
+
+	console.log(isCompleted());
 }
 
 function cellOccupied(x, z){
@@ -56,23 +59,40 @@ function cellOccupied(x, z){
 }
 
 function puzzleClick(index){
-	console.log(index);
+	
 	//decompose the index
-	var x = Math.floor(index / sizeX);
-	var z = Math.floor(index % sizeZ);
+	var cell = $("#piece-"+index).attr("cell");
+
+	var x = Math.floor(cell / sizeX);
+	var z = Math.floor(cell % sizeZ);
 
 	//check for empty neighbours, maybe do a for?
 
-	if( x+1 < sizeX && !cellOccupied(x+1,z+0) )
+	if( x+1 < sizeX && !cellOccupied(x+1,z+0) ){
 		setPuzzlePosition(index, (x+1) * sizeX + z+0);
+		return;
+	}
 
-	if( z+1 < sizeZ && !cellOccupied(x+0,z+1) )
+	if( z+1 < sizeZ && !cellOccupied(x+0,z+1) ){
 		setPuzzlePosition(index, (x+0) * sizeX + z+1);
+		return;
+	}
 
-	if( x-1 > 0 && !cellOccupied(x-1,z+0) )
+	if( x-1 > 0 && !cellOccupied(x-1,z+0) ){
 		setPuzzlePosition(index, (x-1) * sizeX + z+0);
+		return;
+	}
 
-	if( z-1 > 0 && !cellOccupied(x+0,z-1) )
+	if( z-1 > 0 && !cellOccupied(x+0,z-1) ){
 		setPuzzlePosition(index, (x+0) * sizeX + z-1);
+		return;
+	}
+}
 
+function isCompleted(){
+	for(i = 0; i < puzzleSize; i++){
+		if( $("#piece-"+i).attr("cell") != i)
+			return false;
+	}
+	return true;
 }
