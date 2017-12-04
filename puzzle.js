@@ -53,10 +53,10 @@ function shuffle(){
 function setPuzzlePosition(cellIndex, indexPosition){
 
 	$("#piece-"+cellIndex).animate({top: Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ),
-									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) });
+									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) },250);
 
 	$("#piece-text-"+cellIndex).animate({top: Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ),
-									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) });
+									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) }, 250);
 
 	$("#piece-"+cellIndex).attr("cell", indexPosition);
 
@@ -117,8 +117,8 @@ function isCompleted(){
 
 function triggerWin(){
 	for(i = 0; i < puzzleSize; i++){
-		$("#piece-"+i).animate({opacity: 0 });
-		$("#piece-text-"+i).animate({opacity: 0 });
+		$("#piece-"+i).animate({opacity: 0 },1200);
+		$("#piece-text-"+i).animate({opacity: 0 },1200);
 	}
 	
 	$("#background").animate({opacity: 1 });
