@@ -128,8 +128,6 @@ function triggerWin(){
 function complete(){
 	for(i = 0; i < puzzleSize; i++)
 		setPuzzlePosition(i,i);
-
-	triggerWin();
 }
 
 function restart(){
