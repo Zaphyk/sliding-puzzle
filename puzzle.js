@@ -11,7 +11,8 @@ function generatePuzzlePieces(){
 
 	for(x = 0; x < sizeX; x++){
 		for(z = 0; z < sizeZ; z++){
-			baseGroup.append("<img id='piece"+ (x*sizeX + z)+"' class='puzzle-item' >");
+			if(x * 4 + z < puzzleSize-1)
+			baseGroup.append("<img id='piece-"+ (x*sizeX + z)+"' class='puzzle-item' onclick='puzzleClick();' >");
 		}
 	}
 }
@@ -19,9 +20,14 @@ function generatePuzzlePieces(){
 function generatePuzzlePiecesStyle(){
 	for(x = 0; x < sizeX; x++){
 		for(z = 0; z < sizeZ; z++){
-			$("#piece-"+i).attr("style", "background-position:"
-				+ (-imageSizeX * .5 + imageSizeX / sizeX * x)+"px "
-				+ (-imageSizeZ * .5 + imageSizeZ / sizeZ * z) +"px"); // Build the style according to their position on the table
+
+			// Build the style according to their position on the table
+			$("#piece-"+(x*sizeX+z)).css("background-position-x", (-imageSizeX * 0 + imageSizeX / sizeX * x)+"px ");
+			$("#piece-"+(x*sizeX+z)).css("background-position-y", (-imageSizeZ * 0 + imageSizeZ / sizeZ * z)+"px "); 
 		}
 	}
+}
+
+function puzzleClick(){
+
 }

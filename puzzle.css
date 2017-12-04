@@ -2,9 +2,12 @@
 .puzzle-group{
 	background-image:url(images/monks.jpg);
 	width:500px;
-   	height:auto;
+   	height:500px;
 }
 
 .puzzle-item{
-
+	background-image:url(images/monks.jpg);
+	width: 125px;
+	height: 125px;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, .5);
 }
