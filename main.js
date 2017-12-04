@@ -1,3 +1,4 @@
 
 generatePuzzlePieces();
 generatePuzzlePiecesStyle();
+shuffle();

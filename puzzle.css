@@ -6,6 +6,7 @@
 }
 
 .puzzle-item{
+	position: absolute;
 	background-image:url(images/monks.jpg);
 	width: 125px;
 	height: 125px;

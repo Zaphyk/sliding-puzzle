@@ -22,10 +22,14 @@ function generatePuzzlePiecesStyle(){
 		for(z = 0; z < sizeZ; z++){
 
 			// Build the style according to their position on the table
-			$("#piece-"+(x*sizeX+z)).css("background-position-x", (-imageSizeX * 0 + imageSizeX / sizeX * x)+"px ");
-			$("#piece-"+(x*sizeX+z)).css("background-position-y", (-imageSizeZ * 0 + imageSizeZ / sizeZ * z)+"px "); 
+			$("#piece-"+(x*sizeX+z)).css("background-position-x", (imageSizeZ / sizeZ * (sizeZ-z))+"px ");
+			$("#piece-"+(x*sizeX+z)).css("background-position-y", (imageSizeX / sizeX * (sizeX-x))+"px "); 
 		}
 	}
+}
+
+function shuffle(){
+
 }
 
 function puzzleClick(){
