@@ -1,18 +1,26 @@
 
+
 .puzzle-background{
+
 	background-image:url(images/monks.jpg);
 	width:500px;
    	height:500px;
-   	position: absolute;
    	opacity:.6;
    	filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
 .puzzle-group{
 	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+.puzzle-text{
+	padding-top: 50px;
 }
 
 .puzzle-item{
+	border:1px solid black;
 	position: absolute;
 	background-image:url(images/monks.jpg);
 	width: 125px;
