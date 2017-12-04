@@ -32,3 +32,11 @@
     animation: left-slide 0.5s forwards;
     animation-delay: 2s;
 }
+
+.puzzle-item-num{
+	position: absolute;
+	padding-left: 5px;
+	padding-top: 5px;
+	font-family: Arial, Geneva, Helvetica, sans-serif;
+	color: white;
+}

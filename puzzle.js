@@ -13,7 +13,8 @@ function generatePuzzlePieces(){
 		for(z = 0; z < sizeZ; z++){
 
 			if(x * 4 + z < puzzleSize)
-				baseGroup.append("<img id='piece-"+ (x*sizeX + z)+"' class='puzzle-item' onclick='puzzleClick("+(x*sizeX + z)+");' >");
+				baseGroup.append("<img id='piece-"+ (x*sizeX + z)+"' class='puzzle-item' onclick='puzzleClick("+(x*sizeX + z)+");' >"
+								+"<span id='piece-text-"+ (x*sizeX + z)+"' class='puzzle-item-num'>"+(x*sizeX + z)+"</span> </img>");
 
 			setPuzzlePosition((x*sizeX + z), (x*sizeX + z));
 		}
@@ -52,6 +53,9 @@ function shuffle(){
 function setPuzzlePosition(cellIndex, indexPosition){
 
 	$("#piece-"+cellIndex).animate({top: Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ),
+									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) });
+
+	$("#piece-text-"+cellIndex).animate({top: Math.floor(indexPosition / sizeX) * (imageSizeZ / sizeZ),
 									left: (indexPosition % sizeZ) * (imageSizeX / sizeX) });
 
 	$("#piece-"+cellIndex).attr("cell", indexPosition);
