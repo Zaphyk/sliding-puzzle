@@ -1,8 +1,14 @@
 
-.puzzle-group{
+.puzzle-background{
 	background-image:url(images/monks.jpg);
 	width:500px;
    	height:500px;
+   	position: absolute;
+   	opacity:.6;
+}
+
+.puzzle-group{
+	position: absolute;
 }
 
 .puzzle-item{
