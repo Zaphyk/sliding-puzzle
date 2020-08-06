@@ -1,1 +1,3 @@
 # sliding-puzzle
+
+![](puzzle.gif)
